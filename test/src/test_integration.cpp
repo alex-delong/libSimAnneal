@@ -1,4 +1,4 @@
-#include <libSimAnneal.hpp>
+#include <libAnneal1D.hpp>
 #include <cmath>
 #include <functional>
 #include <iostream>
