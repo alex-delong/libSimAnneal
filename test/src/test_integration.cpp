@@ -21,7 +21,7 @@ int main() {
     std::vector<double> y = matplot::transform(x, energy_fn);
     matplot::plot(x, y);
     matplot::show();
-    Anneal one_dim_anneal(energy_fn, T0, Tf, tau, x_init, scale);
+    Anneal1D one_dim_anneal(energy_fn, T0, Tf, tau, x_init, scale);
     double result = one_dim_anneal();
     std::cout << result << std::endl;
     one_dim_anneal.show_plot();

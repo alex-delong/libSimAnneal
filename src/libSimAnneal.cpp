@@ -14,7 +14,7 @@ double P(double delta_E, double T) {
     return exp(-delta_E/T);
 }
 
-class Anneal::Impl {
+class Anneal1D::Impl {
     std::function<double(double)> E;
     double T0;
     double Tf;
@@ -76,7 +76,7 @@ public:
     }
 };
 
-Anneal::Anneal(
+Anneal1D::Anneal1D(
     std::function<double(double)> E, 
     double T0,
     double Tf,
@@ -86,12 +86,12 @@ Anneal::Anneal(
 ) :
     pimpl(new Impl(E, T0, Tf, tau, x, scale)) 
 {}
-double Anneal::operator()() {
+double Anneal1D::operator()() {
     return (*this->pimpl)();
 }
-void Anneal::show_plot() {
+void Anneal1D::show_plot() {
     this->pimpl->show_plot();
 }
-Anneal::~Anneal() {
+Anneal1D::~Anneal1D() {
     delete this->pimpl;
 }

@@ -1,11 +1,11 @@
 #include <functional>
 #include <vector>
 namespace SimAnneal {
-    class Anneal {
+    class Anneal1D {
         class Impl;
         Impl* pimpl;
     public:
-        Anneal(
+        Anneal1D(
             std::function<double(double)> E,
             double T0, 
             double Tf, 
@@ -15,6 +15,6 @@ namespace SimAnneal {
         );
         void show_plot();
         double operator()();
-        ~Anneal();
+        ~Anneal1D();
     };
 }
