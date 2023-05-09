@@ -15,9 +15,9 @@ OBJS_TEST_INTEGRATION=test/lib/test_integration.o
 CXX=g++
 CXX_FLAGS=-I include 
 
-all: test-all libs
+all: test-all build
 
-libs: $(LIBS)
+build: $(LIBS)
 
 $(LIBS) : lib/lib%.so : src/lib%.cpp include/lib%.hpp
 	mkdir -p lib
