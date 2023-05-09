@@ -15,6 +15,10 @@ OBJS_TEST_INTEGRATION=test/lib/test_integration.o
 CXX=g++
 CXX_FLAGS=-I include 
 
+install: build
+	cp lib/* /usr/lib
+	cp include/* /usr/include
+
 all: test-all build
 
 build: $(LIBS)
