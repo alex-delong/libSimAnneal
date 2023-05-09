@@ -1,0 +1,4 @@
+lib
+compile_flags.txt
+test/bin
+test/lib
