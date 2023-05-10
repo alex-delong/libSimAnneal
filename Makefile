@@ -28,11 +28,13 @@ $(LIBS) : lib/lib%.so : src/lib%.cpp include/lib%.hpp
 	$(CXX) $(CXX_FLAGS) -c $< -o $@
 
 test-run: test-unit test-int
-	./test/bin/test_unit_SimAnneal
+	./test/bin/test_unit_Anneal1D
+	./test/bin/test_unit_AnnealMD
 	./test/bin/test_integration
 
 test-unit-run: test-unit
-	./test/bin/test_unit_SimAnneal
+	./test/bin/test_unit_Anneal1D
+	./test/bin/test_unit_AnnealMD
 
 test-int-run: test-int
 	./test/bin/test_integration
