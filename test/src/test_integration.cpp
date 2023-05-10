@@ -15,7 +15,7 @@ constexpr static const double scale = 1.0;
 int main() {
     using namespace SimAnneal;
     std::function<double(double)> energy_fn = [](double x) constexpr -> double {
-        return powf(x, 2.0) - 2.0*cosf(2.0*pi*x);
+        return pow(x, 2.0) - 2.0*cos(2.0*pi*x);
     };
     std::vector<double> x = matplot::linspace(-5.0, 5.0, 100);
     std::vector<double> y = matplot::transform(x, energy_fn);
