@@ -16,8 +16,10 @@ CXX=g++
 CXX_FLAGS=-I include 
 
 install: build
-	cp lib/* /usr/lib
-	cp include/* /usr/include
+	mkdir -p /usr/include/libSimAnneal
+	mkdir -p /usr/lib/libSimAnneal
+	cp include/* /usr/include/libSimAnneal
+	cp lib/* /usr/lib/libSimAnneal
 
 all: test-all build
 
