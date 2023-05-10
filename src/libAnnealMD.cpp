@@ -10,12 +10,6 @@
 #include <vector>
 using namespace SimAnneal;
 
-double P(double delta_E, double T) {
-    return exp(-delta_E/T);
-}
-
-
-
 class AnnealMD::Impl {
     std::function<double(std::vector<double>)> E;
     double T0;
@@ -27,6 +21,9 @@ class AnnealMD::Impl {
     std::normal_distribution<double> norm_dist;
     std::vector<std::vector<double>> v_x;
     std::vector<double> v_i;
+    static double P(double delta_E, double T) {
+        return exp(-delta_E/T);
+    }
     double T(unsigned i) const {
         return this->T0*exp(-double(i)/this->tau);
     }
