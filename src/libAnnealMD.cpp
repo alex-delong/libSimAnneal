@@ -53,7 +53,10 @@ public:
         scale(scale)
     {} 
     void show_plot() {
-
+        auto f = matplot::figure(false);
+        auto ax = matplot::gca();
+        auto p = ax->plot(this->v_i, this->v_x);
+        f->show();
     }
     std::vector<double> operator()() {
         std::vector<double> delta_x;
