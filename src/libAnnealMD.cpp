@@ -50,23 +50,32 @@ public:
         Tf(Tf),
         tau(tau),
         x(x),
-        scale(scale)
+        scale(scale),
+        generator(std::time(nullptr)),
+        norm_dist(std::normal_distribution<double>(0.0, scale))
     {} 
     void show_plot() {
-        auto f = matplot::figure(false);
-        auto ax = matplot::gca();
-        auto p = ax->plot(this->v_i, this->v_x);
+        using namespace matplot;
+        auto f = figure(false);
+        auto ax = gca();
+        for (int i = 0; i < this->v_x[0].size(); i++) {
+            std::vector<double> v;
+            for (int j = 0; j < this->v_i.size(); j++) {
+                v.push_back(this->v_x[j][i]);
+            }
+            ax->plot(this->v_i, v);
+            hold(on);
+        }
+        hold(off);
         f->show();
     }
     std::vector<double> operator()() {
-        std::vector<double> delta_x;
-        std::vector<double> x_new;
+        std::vector<double> delta_x = this->x;
+        std::vector<double> x_new = this->x;
         for (int i = 0; T(i) > this->Tf; i++) {
             for (int j = 0; j < this->x.size(); j++) {
-                delta_x.push_back(this->norm_dist(this->generator)*T(i));
-            }
-            for (int k = 0; k < this->x.size(); k++) {
-                x_new.push_back(this->x[i] + delta_x[i]);
+                delta_x[j] = this->norm_dist(this->generator)*T(i);
+                x_new[j] = this->x[j] + delta_x[j];
             }
             this->x = this->metropolis(this->x, x_new, i);
             this->v_i.push_back(i);
